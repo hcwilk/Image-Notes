@@ -68,16 +68,20 @@ function SearchAndPaste() {
         }
     };
 
+    createEffect(() => {
+        console.log('IMAGE URL:', imageUrl())
+    }  );
+
     return (
-        <div>
+        <div class='h-fit min-h-[100px] min-w-[25%] max-w-[50%] flex flex-col items-center'>
             <div
                 onPaste={handlePaste}
                 contentEditable={true}
-                style={{ border: '1px solid black', height: 'auto', "min-height": '100px', cursor: 'text' }}
+                class='w-fit min-w-[25%] h-fit min-h-24 mt-8 border-2 border-dashed flex justify-center'
             >
                 {imageUrl() && <img src={imageUrl()} alt="Pasted" />}
             </div>
-            {result() && <div>{
+            {result() && <div class='text-start w-fit'>{
                 result().map((item:any, index:number) => (
                     <span>
                         {item.response}
